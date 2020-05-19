@@ -67,10 +67,10 @@ namespace Model.DAO
         //Delete product use Entity Framework
         public bool Delete(long id)
         {
-            var query = db.Contents.SingleOrDefault(x=>x.ID==id);
+            var query = db.Products.SingleOrDefault(x=>x.ID==id);
             if(query!=null)
             {
-                db.Contents.Remove(query);
+                db.Products.Remove(query);
                 db.SaveChanges();
                 return true;
             }
