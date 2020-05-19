@@ -10,12 +10,12 @@
             $.ajax({
                 url: "/Admin/User/ChangeStatus",
                 data: { id: id },
-                dataType: "json",
+                dataType: "json",   
                 type: "POST",
                 success: function (response) {
                     console.log(response);
                     if (response.status == true) {
-                        btn.text('Kích hoạt');
+                        btn.html('<strong>Kích hoạt</strong>');
                     }
                     else {
                         btn.text('Khoá');

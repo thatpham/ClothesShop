@@ -83,5 +83,23 @@ namespace ClothesShop.Areas.Admin.Controllers
             var dao = new ProductCategoryDAO();
             ViewBag.CategoryID = new SelectList(dao.ListAll(), "ID", "Name", selectedValue);
         }
+        [HttpDelete]
+        public ActionResult Delete(long id)
+        {
+            ProductDAO dao = new ProductDAO();
+            bool result = dao.Delete(id);
+            SetViewBag();
+            if (result)
+            {
+                SetAlert("Xóa sản phẩm thành công", "success");
+                return RedirectToAction("Index", "Product");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Xóa sản phẩm thất bại");
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
